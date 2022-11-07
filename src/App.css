@@ -19,6 +19,7 @@
 .App {
   min-height: 100vh;
   text-align: center;
+  overflow: hidden;
 }
 
 .App svg {
@@ -121,10 +122,10 @@
 
 .main-content {
   display: flex;
+  gap: 1rem;
 }
 
 .cat-list {
-  border: 5px solid red;
   min-height: 92vh;
   min-width: 25%;
   margin-bottom: 2rem;
@@ -178,10 +179,23 @@ svg {
   color: var(--light-dark-text-color);
 }
 
-.content {
-  width: 100%;
-  height: 100%;
+#sorting-form {
+  margin-top: 2rem;
+  font-size: 1.1rem;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#sorting-form * {
+  border-radius: 5px;
+  padding: 2px 4px;
+}
+
+#sorting-form .btn-sort {
+  background-color: var(--secondary-color);
+  color: #fff;
 }
 
 .products {
@@ -191,14 +205,12 @@ svg {
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  padding-left: 1rem;
-  margin-left: 2rem;
-  padding-block: 2rem;
+  padding-block: 1rem;
 }
 
 .card {
   width: 30%;
-  border: 3px green solid;
+  border: 3px solid var(--secondary-color);
   border-radius: 15px;
   padding: 0.5rem;
   display: flex;
@@ -208,12 +220,12 @@ svg {
 .card .manufacturer {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .card .brand-logo {
   width: 70px;
   display: block;
-  margin-right: auto;
   margin-bottom: 0.7rem;
 }
 
@@ -221,7 +233,6 @@ svg {
   font-family: Lato, sans-serif;
   font-size: 1.5rem;
   font-weight: bold;
-  margin-right: 1rem;
 }
 
 .card .product-image {
@@ -243,7 +254,7 @@ svg {
   align-items: flex-end;
   justify-content: space-between;
   margin-inline: 1rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .card .product-price {
@@ -253,5 +264,40 @@ svg {
 
 .btn-details {
   background-color: var(--primary-color);
-  color: var(--light-dark-text-color);
+  color: #fff;
+  border-radius: 10px;
+}
+
+#pagination {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 3rem;
+}
+
+#pagination ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+}
+
+.page-num {
+  cursor: pointer;
+}
+
+.page-num.current {
+  font-size: 3rem;
+}
+
+.page-nav-btn {
+  border: none;
+  background-color: #aaa;
+  border-radius: 5px;
+  padding: 4px;
+  width: 3rem;
+  font-size: 2rem;
 }

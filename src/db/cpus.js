@@ -2,7 +2,7 @@ const cpus = [
   {
     'id': '_I8700K',
     'manufacturer': 'INTEL',
-    'model': '8700K',
+    'model': 'Core i7 8700K',
     'socket': 'LGA1151',
     'cores': '6C/12T',
     'baseFrequency': '3.7GHZ',
@@ -13,7 +13,7 @@ const cpus = [
   {
     'id': '_I11900K',
     'manufacturer': 'INTEL',
-    'model': '11900K',
+    'model': 'Core i9 11900K',
     'socket': 'LGA1700',
     'cores': '8C/16T',
     'baseFrequency': '3.5GHZ',
@@ -24,7 +24,7 @@ const cpus = [
   {
     'id': '_I11700T',
     'manufacturer': 'INTEL',
-    'model': '11700T',
+    'model': 'Core i7 11700T',
     'socket': 'LGS1200',
     'cores': '8C/16T',
     'baseFrequency': '1.4GHZ',
@@ -35,7 +35,7 @@ const cpus = [
   {
     'id': '_A5600G',
     'manufacturer': 'AMD',
-    'model': '5600G',
+    'model': 'Ryzen 5 5600G',
     'socket': 'AM4',
     'cores': '6C/12T',
     'baseFrequency': '3.9GHZ',
@@ -46,7 +46,7 @@ const cpus = [
   {
     'id': '_A5950X',
     'manufacturer': 'AMD',
-    'model': '5950X',
+    'model': 'Ryzen 9 5950X',
     'socket': 'AM4',
     'cores': '16C/32T',
     'baseFrequency': '3.4GHZ',
@@ -57,7 +57,7 @@ const cpus = [
   {
     'id': '_A5900HS',
     'manufacturer': 'AMD',
-    'model': '5900HS',
+    'model': 'Ryzen 9 5900HS',
     'socket': 'FP6',
     'cores': '8C/16T',
     'baseFrequency': '3.0GHZ',
