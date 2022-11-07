@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+import cpus from './db/cpus'
+import gpus from './db/gpus'
+import smartphones from './db/smartphones'
+import manufacturers from './db/manufacturers'
+import Searchbar from './components/Searchbar'
 import './App.css';
+import CategoriesList from './components/CategoriesList'
+import Content from './components/Content'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Searchbar />
+      <main className='main-content'>
+        <CategoriesList />
+        <Content />
+      </main>
     </div>
   );
 }

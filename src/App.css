@@ -1,38 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+
+:root {
+  --primary-color: #28282c;
+  --secondary-color: #3d3d41;
+  --light-dark-text-color: #79797c;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
 .App {
+  min-height: 100vh;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.btn {
+  height: 100%;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.searchbar {
+  min-height: 8vh;
+  padding: 10px;
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 10px;
+  justify-items: center;
+  align-items: center;
+  background-color: var(--primary-color);
+}
+
+.categories {
   display: flex;
-  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.categories p {
+  font-size: 1.3rem;
+}
+
+.categories svg {
+  cursor: pointer;
+}
+
+.search {
+  width: 80%;
+  height: 100%;
+  padding: 3px 3px 3px 10px;
+  display: flex;
+  align-items: center;
+  background-color: var(--secondary-color);
+  border-radius: 15px;
+}
+
+.search input {
+  height: 100%;
+  flex: 1;
+  font-size: 1.3rem;
+  color: var(--light-dark-text-color);
+  box-shadow: none;
+  border: none;
+  background-color: var(--secondary-color);
+  padding-inline: 10px;
+}
+
+.search input:focus {
+  outline: 0;
+}
+
+.search-btn {
+  background-color: #27bcb4;
+  color: #fff;
+}
+
+.search-btn:hover {
+  background-color: #256b66;
+}
+
+.user-profile {
+  height: 100%;
+  padding: 3px 3px 3px 10px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.user-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.user-profile :where(.login, .signin) {
+  background-color: transparent;
+  color: #fff;
+}
+
+.user-profile :where(.login, .signin):hover {
+  background-color: var(--secondary-color);
+}
+
+.main-content {
+  display: flex;
+}
+
+.cat-list {
+  border: 5px solid red;
+  min-height: 92vh;
+  min-width: 25%;
+  margin-bottom: 2rem;
+  color: #3d3d3d;
+  font-size: 1.5rem;
+  overflow: hidden;
+}
+
+.cat-list ul {
+  font-weight: 600;
+  list-style: none;
+  margin: 2rem 0.5rem 0 4rem;
+}
+
+.cat-list ul li {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  border-radius: 15px;
+  margin-block: 1rem;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.cat-list ul li * {
+  font-size: 1.3rem;
+}
+
+.cat-list ul li :last-child {
+  margin-left: auto;
+}
+
+:where(.cat-list ul li) img,
+svg {
+  margin-right: 1rem;
+}
+
+.cat-list img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.cat-list ul li.active {
+  background-color: var(--primary-color);
+  color: var(--light-dark-text-color);
+  padding-left: 14px;
+}
+
+.cat-list ul li:hover:not(.active) {
+  background-color: var(--secondary-color);
+  color: var(--light-dark-text-color);
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.products {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 1.5rem;
+  padding-left: 1rem;
+  margin-left: 2rem;
+  padding-block: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+.card {
+  width: 30%;
+  border: 3px green solid;
+  border-radius: 15px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card .manufacturer {
+  display: flex;
+  align-items: center;
+}
+
+.card .brand-logo {
+  width: 70px;
+  display: block;
+  margin-right: auto;
+  margin-bottom: 0.7rem;
+}
+
+.card .manufacturer p {
+  font-family: Lato, sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.card .product-image {
+  width: 200px;
+  border-radius: 15px;
+  margin: 0.5rem auto;
+}
+
+.card .product-name {
+  margin-left: 0.5rem;
+  margin-bottom: auto;
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.card .price-listing {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-inline: 1rem;
+  margin-top: 1rem;
+}
+
+.card .product-price {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.btn-details {
+  background-color: var(--primary-color);
+  color: var(--light-dark-text-color);
 }
