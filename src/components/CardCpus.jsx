@@ -6,7 +6,7 @@ const CardCpus = ({ cpu }) => {
     <article className="card cpus">
       <div className="manufacturer">
         <img src={IntelLogo} alt="Manufacturer logo" className='brand-logo' />
-        <p>{cpu.manufacturer}</p>
+        <p>{cpu.manufacturer.shortName}</p>
       </div>
       <img src={NAImage} alt="Product logo" className='product-image' />
       <p className='product-name'>
@@ -14,7 +14,7 @@ const CardCpus = ({ cpu }) => {
       </p>
       <div className='price-listing'>
         <p className='product-price'>
-          {`${cpu.price}€`}
+          {`${cpu.price ? cpu.price + '€' : 'N/A'}`}
         </p>
         <button className='btn btn-details'>Detalles</button>
       </div>

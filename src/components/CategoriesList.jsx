@@ -1,8 +1,9 @@
+import { memo } from 'react'
 import { FaBorderAll, FaMicrochip, FaUserFriends, FaGreaterThan } from 'react-icons/fa'
 import { FiSmartphone } from 'react-icons/fi'
 import gpuIcon from '../assets/gpu-icon.png'
 
-const CategoriesList = () => {
+const CategoriesList = memo(() => {
   return (
     <section className="cat-list">
       <ul>
@@ -34,5 +35,5 @@ const CategoriesList = () => {
       </ul>
     </section>
   )
-}
+})
 export default CategoriesList

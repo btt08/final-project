@@ -1,25 +1,25 @@
-export const Pagination = ({ pageNum = 0, setPageNum, maxNumPages = 0 }) => {
-  const next = (e) => setPageNum(prev => prev === maxNumPages ? prev : ++prev);
-  const prev = (e) => setPageNum(prev => prev === 0 ? prev : --prev);
+export const Pagination = ({ pageData, pageNum, setPageNum }) => {
+  const next = (e) => setPageNum(prev => prev === pageData.totalPages ? prev : ++prev);
+  const prev = (e) => setPageNum(prev => prev === 1 ? prev : --prev);
 
   const pages = [];
-  for (let i = 0; i <= maxNumPages; i++) {
+  for (let i = 1; i <= pageData.totalPages; i++) {
     const btnElem =
       <li
         key={i}
         className={pageNum === i ? 'page-num current' : 'page-num'}
-        onClick={(e) => setPageNum(e.target.innerText - 1)}
-      >{i + 1}</li>;
+        onClick={(e) => setPageNum(+e.target.innerText)}
+      >{i}</li>;
     pages.push(btnElem);
   }
 
   return (
     <div id="pagination">
-      <button className="page-nav-btn" disabled={pageNum === 0} onClick={prev}> &lt;  </button>
+      <button className="page-nav-btn" disabled={pageNum === 1} onClick={prev}> &lt;  </button>
       <ul>
         {pages}
       </ul>
-      <button className="page-nav-btn" disabled={pageNum === maxNumPages} onClick={next}> &gt;</button>
+      <button className="page-nav-btn" disabled={pageNum === pageData.totalPages} onClick={next}> &gt;</button>
     </div>
   )
 }

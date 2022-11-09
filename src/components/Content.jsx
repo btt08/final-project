@@ -1,18 +1,13 @@
-import CardCpus from "./CardCpus"
-import cpus from '../db/cpus'
 import { SortingForm } from "./SortingForm"
 import { Pagination } from "./Pagination"
+import { Products } from "./Products"
 
-const Content = () => {
+const Content = ({ data, pageData, pageNum, setPageNum }) => {
   return (
     <section className="content">
       <SortingForm />
-      <div className="products">
-        {cpus.map((cpu, index) => {
-          return <CardCpus key={index} cpu={cpu} />
-        })}
-      </div>
-      <Pagination />
+      <Products data={data} />
+      <Pagination pageData={pageData} pageNum={pageNum} setPageNum={setPageNum} />
     </section>
   )
 }
