@@ -1,20 +1,42 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import Searchbar from './components/Searchbar'
+import { SpinnerCircular } from 'spinners-react';
+import Searchbar from './components/Searchbar';
 import './App.css';
-import CategoriesList from './components/CategoriesList'
-import Content from './components/Content'
+import CategoriesList from './components/CategoriesList';
+import Content from './components/Content';
 
 function App() {
 
+  const [cat, setCat] = useState('');
+  const [search, setSearch] = useState('');
   const [data, setData] = useState([]);
   const [pageData, setPageData] = useState({});
   const [pageNum, setPageNum] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const spinnerStyle = {
+    width: '10rem',
+    height: '10rem',
+    margin: 'auto'
+  };
 
   useEffect(() => {
-    const getData = async () => {
+    const getProducts = async () => {
+      let url = `/products/`;
+      let end_url = `page=${pageNum}`;
+      if (cat !== '') {
+        url += `cat/${cat}?${end_url}`;
+        setSearch('');
+      }
+      else if (search !== '') {
+        console.log(search)
+        url += `search?q=${search}&${end_url}`;
+        setCat('');
+      }
+      else url += `?${end_url}`
       try {
-        const response = await axios.get(`/cpus?page=${pageNum}`);
+        const response = await axios.get(`${url}`);
         if (!response.data.error) {
           setData(response.data.results);
           setPageData({
@@ -29,15 +51,20 @@ function App() {
         console.error(error);
       }
     }
-    getData();
-  }, [pageNum]);
+    setIsLoading(true);
+    getProducts();
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+  }, [pageNum, cat, search]);
 
   return (
     <div className="App">
-      <Searchbar />
+      <Searchbar search={search} setSearch={setSearch} />
       <main className='main-content'>
-        <CategoriesList />
-        <Content data={data} pageData={pageData} pageNum={pageNum} setPageNum={setPageNum} />
+        <CategoriesList cat={cat} setCat={setCat} />
+        {isLoading && <SpinnerCircular style={spinnerStyle} />}
+        {!isLoading && <Content data={data} pageData={pageData} pageNum={pageNum} setPageNum={setPageNum} />}
       </main>
     </div>
   );
