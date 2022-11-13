@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { FaBorderAll, FaMicrochip, FaUserFriends, FaGreaterThan } from 'react-icons/fa'
+import { FaBorderAll, FaMicrochip, FaGreaterThan } from 'react-icons/fa'
 import { FiSmartphone } from 'react-icons/fi'
 import gpuIcon from '../assets/gpu-icon.png'
 
@@ -29,11 +29,6 @@ const CategoriesList = memo(({ cat, setCat }) => {
           onClick={() => setCat('smartphone')}>
           <FiSmartphone />
           <p>Smartphones</p>
-          <FaGreaterThan />
-        </li>
-        <li>
-          <FaUserFriends />
-          <p>Fabricantes</p>
           <FaGreaterThan />
         </li>
       </ul>

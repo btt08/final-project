@@ -1,8 +1,11 @@
 import { FaSearch, FaBars, FaChevronDown } from 'react-icons/fa'
 import profileImage from '../assets/profile.png'
 
-const Searchbar = ({ search, setSearch }) => {
-  const handleChange = (e) => setSearch(e.target.value);
+const Searchbar = ({ search, setSearch, setCat }) => {
+  const handleChange = (e) => {
+    setCat('');
+    setSearch(e.target.value);
+  };
 
   return (
     <div className='searchbar'>
@@ -10,7 +13,8 @@ const Searchbar = ({ search, setSearch }) => {
         <FaBars />
         <p>Categorías</p>
       </div>
-      <form onSubmit={(e) => e.preventDefault()} className='search'>
+      <form className='search'
+        onSubmit={(e) => e.preventDefault()}>
         <FaSearch />
         <input type="text"
           value={search}

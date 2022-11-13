@@ -14,6 +14,7 @@ function App() {
   const [pageData, setPageData] = useState({});
   const [pageNum, setPageNum] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const [sort, setSort] = useState([['model', 'asc']]);
 
   const spinnerStyle = {
     width: '10rem',
@@ -23,16 +24,18 @@ function App() {
 
   useEffect(() => {
     const getProducts = async () => {
-      let url = `/products/`;
-      let end_url = `page=${pageNum}`;
-      if (cat !== '') {
-        url += `cat/${cat}?${end_url}`;
-        setSearch('');
-      }
-      else if (search !== '') {
-        console.log(search)
-        url += `search?q=${search}&${end_url}`;
-        setCat('');
+      let url = '/products';
+      let end_url = `page=${pageNum}&field=${sort[0][0]}&order=${sort[0][1]}`;
+      if (cat !== '' || search !== '') {
+        if (search !== '') {
+          url += `/search?q=${search}&${end_url}`;
+          setPageNum(1);
+        }
+        if (cat !== '') {
+          url += `/cat/${cat}?${end_url}`;
+          setPageNum(1);
+          setSearch('');
+        }
       }
       else url += `?${end_url}`
       try {
@@ -46,7 +49,7 @@ function App() {
           });
         }
         else
-          console.log(response.data.error)
+          setData(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -56,15 +59,16 @@ function App() {
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
-  }, [pageNum, cat, search]);
+  }, [pageNum, cat, search, sort]);
 
   return (
     <div className="App">
-      <Searchbar search={search} setSearch={setSearch} />
+      <Searchbar search={search} setSearch={setSearch} setCat={setCat} />
       <main className='main-content'>
         <CategoriesList cat={cat} setCat={setCat} />
         {isLoading && <SpinnerCircular style={spinnerStyle} />}
-        {!isLoading && <Content data={data} pageData={pageData} pageNum={pageNum} setPageNum={setPageNum} />}
+        {!isLoading &&
+          <Content data={data} pageData={pageData} pageNum={pageNum} setPageNum={setPageNum} sort={sort} setSort={setSort} />}
       </main>
     </div>
   );

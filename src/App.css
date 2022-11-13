@@ -152,6 +152,7 @@
 
 .cat-list ul li * {
   font-size: 1.3rem;
+  margin-bottom: 0;
 }
 
 .cat-list ul li :last-child {
@@ -224,8 +225,13 @@ svg {
   flex-direction: column;
 }
 
+.card-product .manufacturer {
+  height: 50px;
+}
+
 .card-product .brand-logo {
   width: 40%;
+  max-height: 60px;
   display: block;
   margin: 0.5rem auto;
 }
