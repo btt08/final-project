@@ -1,7 +1,11 @@
+import { useContext } from 'react';
+import DataContext from '../context/dataContext';
 import { FaSearch, FaBars, FaChevronDown } from 'react-icons/fa'
 import profileImage from '../assets/profile.png'
 
-const Searchbar = ({ search, setSearch, setCat }) => {
+const Searchbar = () => {
+  const { search, setSearch, setCat } = useContext(DataContext);
+
   const handleChange = (e) => {
     setCat('');
     setSearch(e.target.value);

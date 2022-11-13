@@ -1,4 +1,9 @@
-export const Pagination = ({ pageData, pageNum, setPageNum }) => {
+import { useContext } from 'react';
+import DataContext from '../context/dataContext';
+
+export const Pagination = () => {
+  const { pageData, pageNum, setPageNum } = useContext(DataContext);
+
   const next = (e) => setPageNum(prev => prev === pageData.totalPages ? prev : ++prev);
   const prev = (e) => setPageNum(prev => prev === 1 ? prev : --prev);
 

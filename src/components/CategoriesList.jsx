@@ -1,9 +1,13 @@
 import { memo } from 'react'
+import { useContext } from 'react';
+import DataContext from '../context/dataContext';
 import { FaBorderAll, FaMicrochip, FaGreaterThan } from 'react-icons/fa'
 import { FiSmartphone } from 'react-icons/fi'
 import gpuIcon from '../assets/gpu-icon.png'
 
-const CategoriesList = memo(({ cat, setCat }) => {
+const CategoriesList = memo(() => {
+  const { cat, setCat } = useContext(DataContext);
+
   return (
     <section className="cat-list">
       <ul>
