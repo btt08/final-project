@@ -1,13 +1,24 @@
 import { SortingForm } from "./SortingForm"
 import { Pagination } from "./Pagination"
 import { Products } from "./Products"
+import { useContext } from 'react';
+import DataContext from '../context/dataContext';
+import { SpinnerCircular } from 'spinners-react';
 
-const Content = ({ data, pageData, pageNum, setPageNum, sort, setSort }) => {
+const Content = () => {
+  const spinnerStyle = {
+    width: '5rem',
+    height: '5rem',
+    margin: '5rem auto'
+  };
+  const { isLoading } = useContext(DataContext);
+
   return (
     <section className="content">
-      <SortingForm sort={sort} setSort={setSort} />
-      <Products data={data} />
-      <Pagination pageData={pageData} pageNum={pageNum} setPageNum={setPageNum} />
+      <SortingForm />
+      <Pagination />
+      {isLoading && <SpinnerCircular style={spinnerStyle} />}
+      {!isLoading && <Products />}
     </section>
   )
 }

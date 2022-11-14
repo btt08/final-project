@@ -1,13 +1,15 @@
 import { memo } from 'react';
+import { useContext } from 'react';
+import DataContext from '../context/dataContext';
 import { useForm } from 'react-hook-form'
 
-export const SortingForm = memo(({ sort, setSort }) => {
+export const SortingForm = memo(() => {
   const { register, handleSubmit } = useForm();
-
+  const { sort, setSort, setPageNum } = useContext(DataContext);
   return (
     <form id='sorting-form'
       onSubmit={handleSubmit((data) => {
-        console.log(data)
+        setPageNum(1);
         setSort([[data.field, data.order]]);
       })}
     >
