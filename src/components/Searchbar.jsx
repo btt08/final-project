@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import DataContext from '../context/dataContext';
-import { FaSearch, FaBars, FaChevronDown } from 'react-icons/fa'
-import profileImage from '../assets/profile.png'
+
+import { FaSearch, FaBars } from 'react-icons/fa'
 
 const Searchbar = () => {
   const { search, setSearch, setCat } = useContext(DataContext);
 
   const handleChange = (e) => {
-    setCat('');
+    setCat(prev => prev !== '' ? '' : prev);
     setSearch(e.target.value);
   };
 
@@ -29,13 +29,6 @@ const Searchbar = () => {
           Buscar
         </button>
       </form>
-      <div className='user-profile'>
-        <img src={profileImage} alt='Imagen de perfil' />
-        <p>Nombre Persona</p>
-        <FaChevronDown />
-        {/* <button className='button login'>Entrar</button>
-        <button className='button signin'>Registrarse</button> */}
-      </div>
     </div>
   )
 }

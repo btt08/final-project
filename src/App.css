@@ -27,6 +27,11 @@
   height: 1.5rem;
 }
 
+.App p,
+.App ul {
+  margin-bottom: 0;
+}
+
 
 .button {
   height: 100%;
@@ -96,30 +101,6 @@
   background-color: #256b66;
 }
 
-.user-profile {
-  height: 100%;
-  padding: 3px 3px 3px 10px;
-  display: flex;
-  gap: 15px;
-  align-items: center;
-  cursor: pointer;
-}
-
-.user-profile img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-.user-profile :where(.login, .signin) {
-  background-color: transparent;
-  color: #fff;
-}
-
-.user-profile :where(.login, .signin):hover {
-  background-color: var(--secondary-color);
-}
-
 .main-content {
   display: flex;
   gap: 1rem;
@@ -129,7 +110,7 @@
   min-height: 92vh;
   min-width: 25%;
   margin-bottom: 2rem;
-  color: #3d3d3d;
+  color: var(--primary-color);
   font-size: 1.5rem;
   overflow: hidden;
 }
@@ -171,7 +152,7 @@ svg {
 
 .cat-list ul li.active {
   background-color: var(--primary-color);
-  color: var(--light-dark-text-color);
+  color: #ddd;
   padding-left: 14px;
 }
 
@@ -207,7 +188,6 @@ svg {
 
 .products {
   flex: 1;
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -230,14 +210,13 @@ svg {
 }
 
 .card-product .brand-logo {
-  width: 40%;
-  max-height: 60px;
-  display: block;
+  max-width: 40%;
+  max-height: auto;
   margin: 0.5rem auto;
 }
 
 .card-product .product-image {
-  width: 200px;
+  max-width: 80%;
   border-radius: 15px;
   margin: 0.5rem auto;
 }
@@ -263,10 +242,6 @@ svg {
   font-weight: 500;
 }
 
-.card-product .product-price p {
-  margin-bottom: 0 !important;
-}
-
 .btn-details {
   background-color: var(--primary-color);
   color: #fff;
@@ -274,16 +249,18 @@ svg {
 }
 
 #pagination {
-  border-top: auto;
+  margin: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-bottom: 3rem;
 }
 
-#pagination ul {
+#pagination ul.pages {
   padding: 0;
+  border-bottom: 0 !important;
+  height: 2.5rem;
+  line-height: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -301,12 +278,13 @@ svg {
 }
 
 .page-nav-btn {
+  color: var(--light-dark-text-color);
+  background-color: var(--secondary-color);
   border: none;
-  background-color: #aaa;
   border-radius: 5px;
-  padding: 4px;
-  width: 3rem;
-  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
 }
 
 .product-details p {

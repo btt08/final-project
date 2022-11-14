@@ -23,7 +23,6 @@ export const DataProvider = ({ children }) => {
         }
         if (cat !== '') {
           url += `/cat/${cat}?${end_url}`;
-          setPageNum(1);
           setSearch('');
         }
       }
@@ -49,6 +48,8 @@ export const DataProvider = ({ children }) => {
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
   }, [pageNum, cat, search, sort]);
 
   return (

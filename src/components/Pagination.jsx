@@ -3,7 +3,6 @@ import DataContext from '../context/dataContext';
 
 export const Pagination = () => {
   const { pageData, pageNum, setPageNum } = useContext(DataContext);
-
   const next = (e) => setPageNum(prev => prev === pageData.totalPages ? prev : ++prev);
   const prev = (e) => setPageNum(prev => prev === 1 ? prev : --prev);
 
@@ -21,7 +20,7 @@ export const Pagination = () => {
   return (
     <div id="pagination">
       <button className="page-nav-btn" disabled={pageNum === 1} onClick={prev}> &lt;  </button>
-      <ul>
+      <ul className='pages'>
         {pages}
       </ul>
       <button className="page-nav-btn" disabled={pageNum === pageData.totalPages} onClick={next}> &gt;</button>
